@@ -1,7 +1,7 @@
 <template>
+  <NavBar></NavBar>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
     <!-- <form-box v-slot="{ errors, values, validate }" @submit="onSubmit" >
       {{ errors }} {{ values }}
 
@@ -17,13 +17,11 @@
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import NavBar from '@/components/NavBar.vue'
 
 export default {
-  name: 'HomeView',
   components: {
-    HelloWorld
+    NavBar
   },
   // data () {
   //   return {
