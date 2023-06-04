@@ -60,7 +60,7 @@ export default {
             document.cookie = `loginToken=${token}; expires=${new Date(expired)}` // 參數：自訂名稱=token; expires=有效日期
             // console.log(res)
             // 轉址
-            this.$router.push('/dashboard')
+            this.$router.push('/dashboard/products')
           }
         })
     }
