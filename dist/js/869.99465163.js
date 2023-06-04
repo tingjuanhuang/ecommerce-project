@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkecommerce_project"]=self["webpackChunkecommerce_project"]||[]).push([[869],{5869:function(e,r,c){c.r(r),c.d(r,{default:function(){return p}});var n=c(3396);const t={class:"row"},u=(0,n._)("h1",null,"404",-1),o=(0,n._)("p",null,"這頁找不到囉",-1),s=[u,o];function l(e,r){return(0,n.wg)(),(0,n.iD)("div",t,s)}var a=c(89);const f={},i=(0,a.Z)(f,[["render",l]]);var p=i}}]);
+//# sourceMappingURL=869.99465163.js.map
