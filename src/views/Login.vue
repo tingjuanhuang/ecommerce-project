@@ -55,7 +55,7 @@ export default {
           if (res.data.success) {
             // 取 token 和 expires
             const { token, expired } = res.data // 物件解構賦值
-            // console.log(token, expired)
+            console.log(token, expired)
             // 加入到 Cookie
             document.cookie = `loginToken=${token}; expires=${new Date(expired)}` // 參數：自訂名稱=token; expires=有效日期
             // console.log(res)
