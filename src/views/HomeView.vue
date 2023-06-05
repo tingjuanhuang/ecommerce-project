@@ -1,5 +1,4 @@
 <template>
-  <NavBar></NavBar>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
     <!-- <form-box v-slot="{ errors, values, validate }" @submit="onSubmit" >
@@ -17,12 +16,7 @@
 </template>
 
 <script>
-import NavBar from '@/components/NavBar.vue'
-
 export default {
-  components: {
-    NavBar
-  },
   // data () {
   //   return {
   //     user: {}
