@@ -1,8 +1,12 @@
 <template>
-  <div class="text-end">
-    <button class="btn btn-primary" type="button" @click="openModal(true)">新增產品</button>
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+    <h1 class="h2">產品列表</h1>
+    <div class="text-end">
+      <button class="btn btn-primary" type="button" @click="openModal(true)">新增產品</button>
+    </div>
   </div>
-    <table class="table mt-4">
+
+    <table class="table table-striped mt-4">
         <thead>
             <tr>
                 <th width="120">分類</th>
@@ -13,7 +17,7 @@
                 <th width="200">編輯</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="table-group-divider">
             <tr v-for="item in products" :key="item.id">
                 <td>{{ item.category }}</td>
                 <td>{{ item.title }}</td>
@@ -104,7 +108,7 @@ export default {
       })
     },
     // 打開 Delete Modal
-    openDelProductModal () {
+    openDelProductModal (item) {
       // eslint-disable-next-line no-undef
       this.tempProduct = { ...item }
       const delComponent = this.$refs.delModal
