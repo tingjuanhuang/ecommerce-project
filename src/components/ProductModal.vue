@@ -25,13 +25,13 @@
               </div>
               <img class="img-fluid" :src="tempProduct.imageUrl" alt="">
               <!-- 延伸技巧，多圖 -->
-              <div class="mt-5" v-if="tempProduct.images">
-                <div v-for="(image, index) in tempProduct.image" :key="index" class="mb-3 input-group" >
-                  <input type="url" class="form-control form-control" placeholder="請輸入連結" v-model="tempProduct.images[index]">
-                  <button type="button" class="btn btn-outline-danger" @click="tempProduct.images.splice(index, 1)">移除</button>
+              <div class="mt-5" v-if="tempProduct.imagesUrl">
+                <div v-for="(image, index) in tempProduct.imagesUrl" :key="index" class="mb-3 input-group" >
+                  <input type="url" class="form-control form-control" placeholder="請輸入連結" v-model="tempProduct.imagesUrl[index]">
+                  <button type="button" class="btn btn-outline-danger" @click="tempProduct.imagesUrl.splice(index, 1)">移除</button>
                 </div>
-                <div v-if="tempProduct.images[tempProduct.images.length - 1] || !tempProduct.images.length">
-                  <button class="btn btn-outline-primary btn-sm d-block w-100" @click="tempProduct.images.push('')">新增圖片</button>
+                <div v-if="tempProduct.imagesUrl[tempProduct.imagesUrl.length - 1] || !tempProduct.imagesUrl.length">
+                  <button class="btn btn-outline-primary btn-sm d-block w-100" @click="tempProduct.imagesUrl.push('')">新增圖片</button>
                 </div>
               </div>
             </div>
