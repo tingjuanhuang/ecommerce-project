@@ -19,7 +19,7 @@
                 <label for="customFile" class="form-label">或 上傳圖片
                   <i class="fas fa-spinner fa-spin"></i>
                 </label>
-                <input type="file" id="customFile" class="form-control">
+                <input type="file" id="customFile" class="form-control" ref="fileInput" @change="uploadFild">
               </div>
               <img class="img-fluid" :src="tempProduct.imageUrl" alt="">
               <!-- 延伸技巧，多圖 -->
@@ -73,9 +73,7 @@
               <div class="mb-3">
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" :true-value="1" :false-value="0" id="is_enabled" v-model="tempProduct.is_enabled">
-                  <label class="form-check-label" for="is_enabled">
-                    是否啟用
-                  </label>
+                  <label class="form-check-label" for="is_enabled">是否啟用</label>
                 </div>
               </div>
             </div>
@@ -125,6 +123,23 @@ export default {
     },
     hideModal () {
       this.modal.hide()
+    },
+    uploadFild () {
+      // 取得上傳的圖片
+      const uploadedFild = this.$refs.fileInput.files[0]
+      // console.dir(uploadedFild)
+      // 轉為 formData 格式
+      const formData = new FormData()
+      // 增加一個欄位到表單 ( 前：input name 屬性，後：欲上傳的圖片 )
+      formData.append('file-to-upload', uploadedFild)
+      // 透過 API 發送到遠端
+      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/upload`
+      this.$http.post(url, formData).then((res) => {
+        // console.log(res.data)
+        if (res.data.success) {
+          this.tempProduct.imageUrl = res.data.imageUrl
+        }
+      })
     }
   },
   // 在元件載入後進行實體
