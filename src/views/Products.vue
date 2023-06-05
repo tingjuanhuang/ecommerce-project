@@ -26,17 +26,19 @@
                 <td>
                     <div class="btn-group">
                     <button class="btn btn-outline-primary btn-sm" @click="openModal(false, item)">編輯</button>
-                    <button class="btn btn-outline-danger btn-sm">刪除</button>
+                    <button class="btn btn-outline-danger btn-sm" @click="openDelProductModal(item)">刪除</button>
                     </div>
                 </td>
             </tr>
         </tbody>
     </table>
     <ProductModal ref="productModal" :product="tempProduct" @update-product="updateProduct"></ProductModal>
+    <DelModal ref="delModal" :item="tempProduct" @del-item="delProduct"></DelModal>
 </template>
 
 <script>
 import ProductModal from '../components/ProductModal.vue'
+import DelModal from '../components/DelModal.vue'
 
 export default {
   data () {
@@ -53,7 +55,8 @@ export default {
   },
   // 區域註冊
   components: {
-    ProductModal
+    ProductModal,
+    DelModal
   },
   methods: {
     // 取得產品資料
@@ -97,6 +100,23 @@ export default {
         console.log(res)
         productComponent.hideModal()
         // 重新取得列表資料
+        this.getProducts()
+      })
+    },
+    // 打開 Delete Modal
+    openDelProductModal () {
+      // eslint-disable-next-line no-undef
+      this.tempProduct = { ...item }
+      const delComponent = this.$refs.delModal
+      delComponent.showModal()
+    },
+    // 刪除產品資料
+    delProduct () {
+      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product/${this.tempProduct.id}`
+      this.$http.delete(url).then((res) => {
+        // console.log(res.data)
+        const delComponent = this.$refs.delModal
+        delComponent.hideModal()
         this.getProducts()
       })
     }
