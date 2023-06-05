@@ -1,4 +1,7 @@
 <template>
+  <div class="text-end">
+    <button class="btn btn-primary" type="button" @click="openModal">新增產品</button>
+  </div>
     <table class="table mt-4">
         <thead>
             <tr>
@@ -29,27 +32,56 @@
             </tr>
         </tbody>
     </table>
+    <ProductModal ref="productModal" :product="tempProduct" @update-product="updateProduct"></ProductModal>
 </template>
 
 <script>
+import ProductModal from '../components/ProductModal.vue'
+
 export default {
   data () {
     return {
+      // 接收 API [產品]資料
       products: [],
-      pagination: {}
+      // 接收 API [分頁]資料
+      pagination: {},
+      // 向內層傳遞的資料
+      tempProduct: {}
     }
   },
+  // 區域註冊
+  components: {
+    ProductModal
+  },
   methods: {
+    // 取得產品資料
     getProducts () {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/products`
-      this.$http.get(api)
-        .then((res) => {
-          if (res.data.success) {
-            // console.log(res.data)
-            this.products = res.data.products
-            this.pagination = res.data.pagination
-          }
-        })
+      this.$http.get(api).then((res) => {
+        if (res.data.success) {
+          // console.log(res.data)
+          this.products = res.data.products
+          this.pagination = res.data.pagination
+        }
+      })
+    },
+    // 打開 Modal
+    openModal () {
+      this.tempProduct = {}
+      const productComponent = this.$refs.productModal
+      productComponent.showModal()
+    },
+    // 更新產品資料
+    updateProduct (item) {
+      this.tempProduct = item
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product`
+      const productComponent = this.$refs.productModal
+      this.$http.post(api).then((res) => {
+        console.log(res)
+        productComponent.hideModal()
+        // 重新取得列表資料
+        this.getProducts()
+      })
     }
   },
   created () {
