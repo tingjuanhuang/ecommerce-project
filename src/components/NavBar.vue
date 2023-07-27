@@ -8,8 +8,8 @@
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-link active" aria-current="page" href="#/dashboard/products">產品</a>
-                <a class="nav-link" href="#">訂單</a>
-                <a class="nav-link" href="#">優惠券</a>
+                <a class="nav-link" href="#/dashboard/orders">訂單</a>
+                <a class="nav-link" href="#/dashboard/coupons">優惠券</a>
                 <a class="nav-link" href="#" @click.prevent="logout">登出</a>
             </div>
           </div>

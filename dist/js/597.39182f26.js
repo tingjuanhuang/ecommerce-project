@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkecommerce_project"]=self["webpackChunkecommerce_project"]||[]).push([[597],{3597:function(e,r,c){function n(e,r){return" 訂單 "}c.r(r),c.d(r,{default:function(){return f}});var t=c(3744);const u={},o=(0,t.Z)(u,[["render",n]]);var f=o}}]);
+//# sourceMappingURL=597.39182f26.js.map
